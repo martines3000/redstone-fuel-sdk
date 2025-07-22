@@ -15,11 +15,13 @@ pub struct Payload {
     pub data_packages: Vec<DataPackage>,
 }
 
-impl Eq for Payload {
+impl PartialEq for Payload {
     fn eq(self, other: Self) -> bool {
         self.data_packages == other.data_packages
     }
 }
+
+impl Eq for Payload {}
 
 impl Payload {
     pub fn from_bytes(bytes: Bytes) -> Self {

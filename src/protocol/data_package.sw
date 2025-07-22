@@ -11,11 +11,13 @@ pub struct DataPackage {
     pub data_points: Vec<DataPoint>,
 }
 
-impl Eq for DataPackage {
+impl PartialEq for DataPackage {
     fn eq(self, other: Self) -> bool {
         self.timestamp == other.timestamp && self.signer_address == other.signer_address && self.data_points == other.data_points
     }
 }
+
+impl Eq for DataPackage {}
 
 pub fn make_data_package(bytes: Bytes) -> (DataPackage, u64) {
     let (signature_rest, signature_bytes) = bytes.slice_tail(SIGNATURE_BS);

@@ -15,11 +15,13 @@ pub struct DataPoint {
     pub value: u256,
 }
 
-impl Eq for DataPoint {
+impl PartialEq for DataPoint {
     fn eq(self, other: Self) -> bool {
         self.feed_id == other.feed_id && self.value == other.value
     }
 }
+
+impl Eq for DataPoint {}
 
 impl DataPoint {
     pub fn from_bytes(bytes: Bytes) -> Self {

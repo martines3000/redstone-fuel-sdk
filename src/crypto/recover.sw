@@ -97,7 +97,6 @@ fn test_recover_signer_address_v28_as_1() {
 }
 
 #[test(should_revert)]
-#[test]
 fn test_recover_signer_address_malleability() {
     let sample = SampleDataPackage::sample(SAMPLE_ID_MALLEABILITY);
     let _ = recover_signer_address(sample.signature_bytes(), sample.signable_bytes);
